@@ -2,7 +2,7 @@
 // Created by lisanhu on 5/8/19.
 //
 
-#include "mstring.h"
+#include "mmstring.h"
 
 #include <string.h>
 
@@ -11,23 +11,23 @@
 #define STRLEN strlen
 
 
-mstring ms_own(const char *cstr, size_t l) {
-    mstring ms;
+mmstring ms_own(const char *cstr, size_t l) {
+    mmstring ms;
     ms.s = STRNDUP(cstr, l);
     ms.cap = l + 1;
     ms.len = l;
     return ms;
 }
 
-mstring ms_borrow(char *cstr, size_t l) {
-    mstring ms;
+mmstring ms_borrow(char *cstr, size_t l) {
+    mmstring ms;
     ms.s = cstr;
     ms.cap = 0;
     ms.len = l;
     return ms;
 }
 
-void ms_destroy(mstring *ms) {
+void ms_destroy(mmstring *ms) {
     if (ms->cap) {
         FREE(ms->s);
     }
@@ -36,8 +36,8 @@ void ms_destroy(mstring *ms) {
     ms->s = NULL;
 }
 
-mstring ms_from(char *s, bool own) {
-    mstring ms;
+mmstring ms_from(char *s, bool own) {
+    mmstring ms;
     size_t len = STRLEN(s);
     if (own) {
         return ms_own(s, len);

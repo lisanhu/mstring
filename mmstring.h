@@ -22,18 +22,18 @@ extern "C" {
 * @param m the memory unit occupied by the object (when the object is borrowing memory from other places, the value should be 0 since it's not taking any particular memory to store the string)
 * @param s the memory address of the beginning of the string
 */
-typedef struct mstring {
+typedef struct mmstring {
     size_t len, cap;
     char *s;
-} mstring;
+} mmstring;
 
-mstring ms_from(char *s, bool own);
+mmstring ms_from(char *s, bool own);
 
-mstring ms_own(const char *cstr, size_t l);
+mmstring ms_own(const char *cstr, size_t l);
 
-mstring ms_borrow(char *cstr, size_t l);
+mmstring ms_borrow(char *cstr, size_t l);
 
-void ms_destroy(mstring *ms);
+void ms_destroy(mmstring *ms);
 
 #ifdef __cplusplus
 };
