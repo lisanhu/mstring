@@ -31,6 +31,7 @@ mmstring ms_from(char *s, bool own);
 
 mmstring ms_own(const char *cstr, size_t l);
 
+#pragma acc routine
 mmstring ms_borrow(char *cstr, size_t l);
 
 void ms_destroy(mmstring *ms);
