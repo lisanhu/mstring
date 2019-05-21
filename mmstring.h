@@ -36,6 +36,8 @@ mmstring ms_borrow(char *cstr, size_t l);
 
 void ms_destroy(mmstring *ms);
 
+size_t ms_to_cstr(mmstring ms, char *buf);
+
 #ifdef __cplusplus
 };
 #endif

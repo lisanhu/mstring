@@ -44,3 +44,9 @@ mmstring ms_from(char *s, bool own) {
     }
     return ms_borrow(s, len);
 }
+
+size_t ms_to_cstr(mmstring ms, char *buf) {
+    strncpy(buf, ms.s, ms.len);
+    buf[ms.len] = '\0';
+    return ms.len;
+}
